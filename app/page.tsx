@@ -10,17 +10,16 @@ import Snackbar from './ui/dashboard/snackbar';
 
 export default function Page() {
   const [slowNotify, setSlowNotify] = useState(false);
+  const [showData, setShowData] = useState<Post[]>([]);
 
   const { data: postData } = useSWR(API_URL, fetcher, {
     onErrorRetry: (error, key, config, revalidate, { retryCount }) =>
       setTimeout(() => revalidate({ retryCount }), 5000),
     revalidateOnReconnect: true,
-    onLoadingSlow: (key, config) => {
+    onLoadingSlow: () => {
       setSlowNotify(true);
     },
   });
-
-  const [showData, setShowData] = useState(postData || null);
 
   const handleSetDataToShow = (dataToShow: Post[]) => {
     setShowData(dataToShow);

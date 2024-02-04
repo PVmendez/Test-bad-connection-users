@@ -1,13 +1,16 @@
 import { CardProps, Post } from '@/app/lib/interfaces';
 
 export const Card = ({ data }: CardProps) => {
-  const groupedData: { [userId: number]: Post[] } = data.reduce((acc, card) => {
-    if (!acc[card.userId]) {
-      acc[card.userId] = [];
-    }
-    acc[card.userId].push(card);
-    return acc;
-  }, {});
+  const groupedData: { [userId: number]: Post[] } = data.reduce(
+    (acc: { [userId: number]: Post[] }, card) => {
+      if (!acc[card.userId]) {
+        acc[card.userId] = [];
+      }
+      acc[card.userId].push(card);
+      return acc;
+    },
+    {},
+  );
 
   return (
     <div>

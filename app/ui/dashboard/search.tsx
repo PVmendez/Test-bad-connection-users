@@ -21,7 +21,7 @@ export default function Search({
       onErrorRetry: (error, key, config, revalidate, { retryCount }) =>
         setTimeout(() => revalidate({ retryCount }), 5000),
       revalidateOnReconnect: true,
-      onLoadingSlow: (key, config) => {
+      onLoadingSlow: () => {
         setSlowNotify(true);
       },
     }
