@@ -8,7 +8,7 @@ export default function Navbar() {
   };
 
   return (
-    <nav className="px-2 bg-gray-800 py-4 rounded">
+    <nav className="px-2 bg-gray-800 py-4">
       <div className="container mx-auto flex items-center justify-between">
         <div className="font-bold text-white">POSTS</div>
         <button className="block text-white md:hidden" onClick={toggleNavbar}>

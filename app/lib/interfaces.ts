@@ -8,3 +8,13 @@ export interface Post {
 export interface CardProps {
   data: Post[];
 }
+
+export interface MenuItem {
+  name: string;
+  link: string;
+}
+
+export interface FooterItem {
+  links: MenuItem[];
+  title: string;
+}
