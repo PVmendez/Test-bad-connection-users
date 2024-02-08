@@ -1,4 +1,4 @@
-import { MenuItem } from "./interfaces";
+import { MenuItem } from './interfaces';
 
 export const PRODUCTS: MenuItem[] = [
   { name: 'Drag And Drop', link: '#' },
@@ -32,4 +32,11 @@ export const Icons: MenuItem[] = [
   { name: 'logo-github', link: '#' },
   { name: 'logo-linkedin', link: '#' },
   { name: 'logo-instagram', link: '#' },
+];
+
+export const NavbarMenu: MenuItem[] = [
+  { name: 'Home', link: '#' },
+  { name: 'About', link: '#' },
+  { name: 'Services', link: '#' },
+  { name: 'Contact', link: '#' },
 ];

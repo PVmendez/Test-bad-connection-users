@@ -87,9 +87,23 @@ export default function Card({ data }: CardProps) {
           );
         })}
       {visibleUsers < Object.keys(groupedData).length && (
-        <button onClick={handleLoadMore} className='hover:text-blue-400'>Load More</button>
+        <button
+          onClick={handleLoadMore}
+          className='md:w-auto" w-full rounded-md bg-teal-400 px-5 py-2.5 
+        text-white duration-300 hover:bg-teal-500'
+        >
+          Load More
+        </button>
       )}
-      {visibleUsers > 3 && <button onClick={handleShowLess} className='hover:text-blue-400'>Show Less</button>}
+      {visibleUsers > 3 && (
+        <button
+          onClick={handleShowLess}
+          className='md:w-auto" w-full rounded-md bg-teal-400 px-5 py-2.5 
+        text-white duration-300 hover:bg-teal-500'
+        >
+          Show Less
+        </button>
+      )}
     </div>
   );
 }

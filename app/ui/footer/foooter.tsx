@@ -23,7 +23,7 @@ export default function Footer() {
            mr-1 w-full rounded px-2 py-2.5 text-gray-800 focus:outline-none sm:mr-5 sm:w-72 lg:mb-0"
           />
           <button
-            className="w-full rounded-md bg-teal-400 px-5 py-2.5 font-[Poppins]
+            className="w-full rounded-md bg-teal-400 px-5 py-2.5
            text-white duration-300 hover:bg-teal-500 md:w-auto"
           >
             Request
