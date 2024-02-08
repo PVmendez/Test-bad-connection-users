@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 import { MagnifyingGlassIcon } from '@heroicons/react/24/outline';
-import { API_URL, fetcher } from '../../lib/data';
+import { fetcher, url } from '../../lib/data';
 import useSWR from 'swr';
 import Snackbar from './snackbar';
 
@@ -15,7 +15,7 @@ export default function Search({
   const [slowNotify, setSlowNotify] = useState(false);
 
   const { data: filteredData, error } = useSWR(
-    searchTerm ? `${API_URL}?userId=${searchTerm}` : null,
+    searchTerm ? `${url}?userId=${searchTerm}` : null,
     fetcher,
     {
       onErrorRetry: (error, key, config, revalidate, { retryCount }) =>
@@ -40,7 +40,7 @@ export default function Search({
   }
 
   return (
-    <div className="relative flex flex-1 flex-shrink-0">
+    <div className="relative flex flex-1 flex-shrink-0 w-fit">
       <label htmlFor="search" className="sr-only">
         Search
       </label>

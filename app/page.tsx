@@ -1,18 +1,20 @@
 'use client';
 
 import useSWR from 'swr';
-import { Card } from './ui/dashboard/card';
-import { API_URL, fetcher } from './lib/data';
-import Search from './ui/dashboard/search';
+import { fetcher, url } from './lib/data';
 import { useState } from 'react';
 import { Post } from './lib/interfaces';
+import Search from './ui/dashboard/search';
 import Snackbar from './ui/dashboard/snackbar';
+import Spinner from './ui/loader/spinner';
+import Card from './ui/dashboard/card';
+import Navbar from './ui/navbar/navbar';
 
 export default function Page() {
   const [slowNotify, setSlowNotify] = useState(false);
   const [showData, setShowData] = useState<Post[]>([]);
 
-  const { data: postData } = useSWR(API_URL, fetcher, {
+  const { data: postData } = useSWR(url, fetcher, {
     onErrorRetry: (error, key, config, revalidate, { retryCount }) =>
       setTimeout(() => revalidate({ retryCount }), 5000),
     revalidateOnReconnect: true,
@@ -27,10 +29,10 @@ export default function Page() {
 
   return (
     <main className="flex min-h-screen flex-col p-6">
-      <div className="container mx-auto px-4">
-        <h1 className="mb-6 text-3xl font-semibold">Posts</h1>
+      <Navbar />
+      <div className="container mx-auto px-4 pt-4">
         <Search placeholder="userId" setDataToShow={handleSetDataToShow} />
-        {postData ? <Card data={showData ?? postData} /> : <p>Loading...</p>}
+        {postData ? <Card data={showData ?? postData} /> : <Spinner />}
         {slowNotify && <Snackbar error={true} />}
       </div>
     </main>
